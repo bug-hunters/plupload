@@ -916,7 +916,11 @@
 						file = files[i];
 						file.status = plupload.UPLOADING;
 						if (this.trigger("BeforeUpload", file)) {
-							this.trigger("UploadFile", file);
+							if (files[i].link != undefined && files[i].link != null) {
+                                this.trigger("UploadLink", file);
+							} else {
+                                this.trigger("UploadFile", file);
+							}
 						}
 					} else {
 						count++;
